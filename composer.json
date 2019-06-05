@@ -1,0 +1,30 @@
+{
+  "name": "qhc/test-package",
+  "description": "测试 package",
+  "keywords": [
+    "qhc",
+    "测试",
+    "package"
+  ],
+  "require": {
+    "php": ">=7.1",
+    "guzzlehttp/guzzle": "~6.3.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "QHC",
+      "email": "qihongchuan@vchangyi.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "TestPackage\\": "src/"
+    },
+    "classmap": [
+      "src/"
+    ]
+  },
+  "extra": {
+  }
+}
