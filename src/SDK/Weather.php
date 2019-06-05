@@ -16,7 +16,9 @@ class Weather
 
     public function __construct($config)
     {
-        $this->config = $config;
+        // 可以从框架的 config/*.php 或者 package 的 config.php 文件中加载配置，以package的config.php为例
+        $defaultConfig = require __DIR__. "/../config.php";
+        $this->config = array_merge($defaultConfig, $config);
     }
 
 
@@ -29,10 +31,13 @@ class Weather
             'timeout'  => 5.0,
         ]);
 
-        $path = 'geocoder/v2/?address=西安市雁塔区财富中心&output=json&ak=eHtWy0Ddwh3vquhKOV4ulxqASmt3RFF5&callback=showLocation';
+        $path = 'geocoder/v2/?address=西安市雁塔区财富中心&output=json&ak='.$this->config['app_secret'];
         $response = $client->request('GET', $path);
 
-        return $response;
+        $result = $response->getBody()->getContents();
+        $result = \GuzzleHttp\json_decode($result);
+
+        return $result;
     }
 
 

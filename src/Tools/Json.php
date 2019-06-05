@@ -24,12 +24,12 @@ class Json
 
     public static function jsonToArray($json)
     {
-        return json_decode($json);
+        return json_decode($json, true);
     }
 
     public function toArray()
     {
-        return json_decode($this->json);
+        return json_decode($this->json, true);
     }
 
     public function json()
@@ -39,6 +39,6 @@ class Json
 
     public function length()
     {
-        return strlen($this->json);
+        return mb_strlen($this->json);
     }
 }
