@@ -21,7 +21,7 @@ class Weather
         $this->config = array_merge($defaultConfig, $config);
     }
 
-    public function getWeather($address)
+    public function getWeather($address = null)
     {
         $client = new Client([
             'base_uri' => 'http://api.map.baidu.com/',
